@@ -18,14 +18,14 @@ pipeline {
                         continueOnError: false,
                         failOnError: true,
                         publishers: [
-                            publisher1(
+                            sshPublisherDesc(
                                 configName: 'staging',
                                 sshCredentials: [
                                     username: "$USERNAME",
                                     encryptedPassphrase: "$USERPASS"
                                 ],
                                 transfers: [
-                                    transfer123(
+                                    sshTransfer(
                                         sourceFiles: 'dist/trainSchedule.zip',
                                         removePrefix: 'dist/',
                                         remoteDirectory: '/tmp/',
