@@ -14,18 +14,18 @@ pipeline {
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
-                    sshPublisher (
+                    sshPublisher(
                         continueOnError: false,
                         failOnError: true,
                         publishers [
-                            publisher1 (
+                            publisher1(
                                 configName: 'staging',
                                 sshCredentials: [
                                     username: "$USERNAME",
                                     encryptedPassphrase: "$USERPASS"
                                 ],
                                 transfers: [
-                                    transfer123 (
+                                    transfer123(
                                         sourceFiles: 'dist/trainSchedule.zip',
                                         removePrefix: 'dist/',
                                         remoteDirectory: '/tmp/',
